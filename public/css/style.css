@@ -1,0 +1,17 @@
+.margin-top-20{
+    margin-top: 20px;
+}
+.feature-img {
+    max-height: 200px;
+}
+.card-title {
+    font-size: 18px !important;
+}
+.card-text {
+    font-size: 14px !important;
+}
+.footer-bottom{
+    padding: 20px;
+    margin-top: 20px;
+    background: lightgray;
+}
