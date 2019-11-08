@@ -13,6 +13,16 @@ class AdminPagesController extends Controller
         return view('admin.pages.index');
     }
 
+    public function product_edit($id){
+        $product = Product::find($id);
+        return view('admin.pages.product.edit')->with('product', $product);
+    }
+
+    public function manage_products(){
+        $products = Product::orderBy('id','desc')->get();
+        return view('admin.pages.product.index')->with('products', $products);
+    }
+
     public function product_create(){
         return view('admin.pages.product.create');
     }
@@ -73,4 +83,56 @@ class AdminPagesController extends Controller
 
         return redirect()->route('admin.product.create');
     }
+
+    public function product_update(Request $request, $id){
+
+        $request->validate([
+           'title'        => 'required|max:150',
+           'description'  => 'required',
+           'price'        => 'required|numeric',
+           'quantity'     => 'required|numeric'
+        ]);
+
+        $product = Product::find($id);
+
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->slug = str_slug($request->title);
+        $product->save();
+
+        return redirect()->route('admin.products');
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

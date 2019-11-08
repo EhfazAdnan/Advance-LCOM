@@ -2,19 +2,12 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
-  <!-- plugins:css -->
   <link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="node_modules/simple-line-icons/css/simple-line-icons.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
   <link rel="stylesheet" href="{{asset('css/admin_style.css')}}">
-  <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('images/favicon.png')}}" />
 </head>
 
@@ -23,8 +16,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('images/logo.svg')}}" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('images/logo-mini.svg')}}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="{{ route('admin.index') }}"><img src="{{ asset('images/logo.svg')}}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('admin.index') }}"><img src="{{ asset('images/logo-mini.svg')}}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -169,21 +162,37 @@
             <div class="nav-link">
               <div class="profile-image"> <img src="{{ asset('images/faces/face4.jpg')}}" alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
-                <p class="name">Richard V.Welsh</p>
+                <p class="name">Ehfaz Adnan</p>
                 <p class="designation">Manager</p>
                 <div class="badge badge-teal mx-auto mt-3">Online</div>
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.html"><img class="menu-icon" src="{{ asset('images/menu_icons/01.png')}}" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('admin.index') }}"><img class="menu-icon" src="{{ asset('images/menu_icons/01.png')}}" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/widgets.html"><img class="menu-icon" src="{{ asset('images/menu_icons/02.png')}}" alt="menu icon"><span class="menu-title">Widgets</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html"><img class="menu-icon" src="{{ asset('images/menu_icons/03.png')}}" alt="menu icon"><span class="menu-title">Buttons</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html"><img class="menu-icon" src="{{ asset('images/menu_icons/04.png')}}" alt="menu icon"><span class="menu-title">Form</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html"><img class="menu-icon" src="{{ asset('images/menu_icons/05.png')}}" alt="menu icon"><span class="menu-title">Charts</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="{{ asset('images/menu_icons/06.png')}}" alt="menu icon"><span class="menu-title">Table</span></a></li>
           <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="{{ asset('images/menu_icons/07.png')}}" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
+
+
+
+
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
+            <a class="nav-link" data-toggle="collapse" href="#manage-products" aria-expanded="false" aria-controls="manage-products"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">Manage Products</span></a>
+            <div class="collapse" id="manage-products">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.products') }}">All Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.product.create') }}">Create Products</a></li>
+              </ul>
+            </div>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">General Pages</span></a>
             <div class="collapse" id="general-pages">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Blank Page</a></li>
@@ -194,37 +203,28 @@
               </ul>
             </div>
           </li>
+
           <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html"><img class="menu-icon" src="{{ asset('images/menu_icons/09.png')}}" alt="menu icon"> <span class="menu-title">Typography</span></a></li>
           <li class="nav-item purchase-button"><a class="nav-link" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Get full version</a></li>
         </ul>
       </nav>
       <!-- partial -->
-      
+
     @yield('content')
 
-      <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
 
-  <!-- plugins:js -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
   <script src="node_modules/chart.js/dist/Chart.min.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
   <script src="js/off-canvas.js"></script>
   <script src="js/misc.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async defer></script>
   <script src="js/maps.js"></script>
-  <!-- End custom js for this page-->
 </body>
 
 </html>
