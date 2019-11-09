@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('backend.layouts.master')
 
 @section('content')
 
@@ -14,7 +14,7 @@
             <form action="{{ route('admin.product.update', $product->id ) }}" method="post" enctype="multipart/form-data">
                {{ csrf_field() }}
 
-            @include('admin.partials.messages')
+            @include('backend.partials.messages')
 
             <div class="form-group">
               <label for="exampleInputEmail1">Title</label>

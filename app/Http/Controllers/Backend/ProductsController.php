@@ -1,26 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
-use App\Product;
-use App\ProductImage;
+use App\Http\Controllers\Controller;
+
+use App\Models\Product;
+use App\Models\ProductImage;
 use Image;
 
-class AdminProductController extends Controller
+class ProductsController extends Controller
 {
     public function index(){
         $products = Product::orderBy('id','desc')->get();
-        return view('admin.pages.product.index')->with('products', $products);
+        return view('backend.pages.product.index')->with('products', $products);
     }
 
     public function create(){
-        return view('admin.pages.product.create');
+        return view('backend.pages.product.create');
     }
 
     public function edit($id){
         $product = Product::find($id);
-        return view('admin.pages.product.edit')->with('product', $product);
+        return view('backend.pages.product.edit')->with('product', $product);
     }
 
     public function store(Request $request){

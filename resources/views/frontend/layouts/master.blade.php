@@ -6,22 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel Ecommerce Project</title>
 
-    @include('partials.styles')
+    @include('frontend.partials.styles')
 
 </head>
 <body>
 
 <div class="wrapper">
 
-@include('partials.nav')
+@include('frontend.partials.nav')
 
 @yield('content')
 
-@include('partials.footer')
+@include('frontend.partials.footer')
 
 </div>
 
-@include('partials.scripts')
+@include('frontend.partials.scripts')
 
 </body>
 </html>
