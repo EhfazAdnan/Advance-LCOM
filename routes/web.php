@@ -6,7 +6,7 @@ Route::get('/contact', 'Frontend\PagesController@contact')->name('contact');
 Route::group(['prefix' => 'products'], function(){
     Route::get('/', 'Frontend\ProductsController@index')->name('products');
     Route::get('/{slug}', 'Frontend\ProductsController@show')->name('products.show');
-    Route::get('/search', 'Frontend\PagesController@search')->name('search');
+    Route::get('/new/search', 'Frontend\PagesController@search')->name('search');
 
     // Categories show
     Route::get('/categories', 'Frontend\CategoriesController@index')->name('categories.index');
@@ -47,3 +47,6 @@ Route::group(['prefix' => 'admin'], function(){
     });
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
