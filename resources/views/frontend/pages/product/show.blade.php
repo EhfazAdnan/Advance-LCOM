@@ -39,12 +39,12 @@
 
       <div class="col-md-8">
          <div class="widget">
-           <h3>Product Details - {{ $product->title }}</h3>
-           <h3>Product Price - {{ $product->price }} Taka 
+           <h4>Product Details - {{ $product->title }} in <mark>{{ $product->category->name }}</mark></h4>
+           <h4 class="mt-3">Product Price - {{ $product->price }} Taka 
              <span class="badge badge-primary">
                 {{ $product->quantity < 1 ? 'No item is Available' : $product->quantity. ' items in stock' }}
              </span>
-           </h3>
+           </h4>
 
            <hr>
 

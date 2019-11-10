@@ -37,6 +37,33 @@
             </div>
 
             <div class="form-group">
+              <label>Select Category</label>
+              <select name="category_id" class="form-control">
+                <option value="">Please Select a Category</option>
+                @foreach(App\Models\Category::orderBy('name','asc')->where('parent_id', NULL)->get() as $parent)
+                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
+
+                  @foreach(App\Models\Category::orderBy('name','asc')->where('parent_id', $parent->id)->get() as $child)
+                    <option value="{{ $child->id }}">---- {{ $child->name }}</option>
+                  @endforeach
+
+                @endforeach
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>Select Brand</label>
+              <select name="brand_id" class="form-control">
+                <option value="">Please Select a Product Brand</option>
+                @foreach(App\Models\Brand::orderBy('name','asc')->get() as $brand)
+                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                @endforeach
+              </select>
+            </div>
+
+
+            <div class="form-group">
               <label for="product_image">Product Image</label>
               <div class="row">
 

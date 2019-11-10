@@ -3,10 +3,15 @@
 Route::get('/', 'Frontend\PagesController@index')->name('index');
 Route::get('/contact', 'Frontend\PagesController@contact')->name('contact');
 
-Route::get('/products', 'Frontend\ProductsController@index')->name('products');
-Route::get('/product/{slug}', 'Frontend\ProductsController@show')->name('products.show');
-Route::get('/search', 'Frontend\PagesController@search')->name('search');
+Route::group(['prefix' => 'products'], function(){
+    Route::get('/', 'Frontend\ProductsController@index')->name('products');
+    Route::get('/{slug}', 'Frontend\ProductsController@show')->name('products.show');
+    Route::get('/search', 'Frontend\PagesController@search')->name('search');
 
+    // Categories show
+    Route::get('/categories', 'Frontend\CategoriesController@index')->name('categories.index');
+    Route::get('/category/{id}', 'Frontend\CategoriesController@show')->name('categories.show');
+});
 
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Backend\PagesController@index')->name('admin.index');
@@ -29,6 +34,16 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('/store', 'Backend\CategoriesController@store')->name('admin.category.store');
         Route::post('/edit/{id}', 'Backend\CategoriesController@update')->name('admin.category.update');
         Route::post('/delete/{id}', 'Backend\CategoriesController@delete')->name('admin.category.delete');
+    });
+
+    // Brand routes
+    Route::group(['prefix' => '/brands'], function(){
+        Route::get('/', 'Backend\BrandsController@index')->name('admin.brands');
+        Route::get('/create', 'Backend\BrandsController@create')->name('admin.brand.create');
+        Route::get('/edit/{id}', 'Backend\BrandsController@edit')->name('admin.brand.edit');
+        Route::post('/store', 'Backend\BrandsController@store')->name('admin.brand.store');
+        Route::post('/edit/{id}', 'Backend\BrandsController@update')->name('admin.brand.update');
+        Route::post('/delete/{id}', 'Backend\BrandsController@delete')->name('admin.brand.delete');
     });
 
 });
