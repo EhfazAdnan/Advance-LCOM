@@ -15,3 +15,11 @@
     margin-top: 20px;
     background: lightgray;
 }
+.product-item{
+    background-color: gray;
+}
+
+.child-rows{
+    padding-left: 20px;
+    background: #fff;
+}

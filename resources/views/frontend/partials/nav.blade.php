@@ -28,14 +28,16 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+
+    <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="get">
     <div class="input-group">
-       <input type="text" class="form-control" placeholder="Search Products" aria-label="Recipient's username" aria-describedby="button-addon2">
+       <input type="text" name="search" class="form-control" placeholder="Search Products">
        <div class="input-group-append">
          <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
        </div>
     </div>
     </form>
+
   </div>
   </div>
 </nav>

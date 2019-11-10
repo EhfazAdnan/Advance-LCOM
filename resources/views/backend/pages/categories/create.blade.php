@@ -29,6 +29,7 @@
             <div class="form-group">
                <label>Parent Category</label>
                <select name="parent_id" class="form-control">
+               <option value="">Please select a primary category</option>
                   @foreach($main_categories as $category)
                      <option value="{{ $category->id }}">{{ $category->name }}</option>
                   @endforeach
