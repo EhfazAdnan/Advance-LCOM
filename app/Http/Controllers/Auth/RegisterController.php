@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use App\Models\Division;
+use App\Models\District;
+
 class RegisterController extends Controller
 {
     /*
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,6 +43,14 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm(){
+
+        $divisions = Division::orderBy('priority','asc')->get();
+        $districts = District::orderBy('name','asc')->get();
+
+        return view('auth.register', compact('districts','divisions'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -49,9 +60,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:25',
+            'last_name' => 'nullable|string|max:15',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'division_id' => 'required|numeric',
+            'district_id' => 'required|numeric',
+            'phone_no' => 'required|max:15',
+            'street_address' => 'required|max:100'
         ]);
     }
 
@@ -64,7 +80,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'username' => str_slug($data['first_name'].$data['last_name']),
+            'division_id' => $data['division_id'],
+            'district_id' => $data['district_id'],
+            'phone_no' => $data['phone_no'],
+            'street_address' => $data['street_address'],
+            'ip_address' => request()->ip(),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
