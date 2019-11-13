@@ -13,6 +13,9 @@ Route::group(['prefix' => 'products'], function(){
     Route::get('/category/{id}', 'Frontend\CategoriesController@show')->name('categories.show');
 });
 
+//user routes
+Route::get('/token/{token}', 'Frontend\VerificationController@verify')->name('user.verification');
+
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Backend\PagesController@index')->name('admin.index');
 
