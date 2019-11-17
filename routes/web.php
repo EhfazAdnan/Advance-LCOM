@@ -14,7 +14,12 @@ Route::group(['prefix' => 'products'], function(){
 });
 
 //user routes
+Route::group(['prefix' => 'user'], function(){
 Route::get('/token/{token}', 'Frontend\VerificationController@verify')->name('user.verification');
+Route::get('/dashboard', 'Frontend\UsersController@dashboard')->name('user.dashboard');
+Route::get('/profile', 'Frontend\UsersController@profile')->name('user.profile');
+Route::post('/profile/update', 'Frontend\UsersController@profileUpdate')->name('user.profile.update');
+});
 
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Backend\PagesController@index')->name('admin.index');
