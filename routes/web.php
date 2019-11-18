@@ -21,6 +21,12 @@ Route::get('/profile', 'Frontend\UsersController@profile')->name('user.profile')
 Route::post('/profile/update', 'Frontend\UsersController@profileUpdate')->name('user.profile.update');
 });
 
+//carts routes
+Route::group(['prefix' => 'carts'], function(){
+    Route::get('/','Frontend\CartsController@index')->name('carts');
+    Route::post('/store','Frontend\CartsController@store')->name('carts.store');
+});
+
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Backend\PagesController@index')->name('admin.index');
 

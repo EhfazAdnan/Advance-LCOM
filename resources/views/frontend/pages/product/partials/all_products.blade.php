@@ -22,7 +22,7 @@
                         <a href="{{ route('products.show', $product->slug) }}">{{ $product->title }}</a>
                      </h4>
                      <p class="card-text text-center">Price - {{ $product->price }}</p>
-                     <a href="#" class="btn btn-outline-warning">Add to cart</a>
+                     @include('frontend.pages.product.partials.cart-button')
                   </div>
                 </div>
              </div>

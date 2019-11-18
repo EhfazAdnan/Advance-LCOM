@@ -42,11 +42,19 @@
     </ul>
 
                      <ul class="navbar-nav ml-auto">
+                     <li>
+                     <a class="nav-link" href="{{ route('carts') }}">
+                      <button class="btn btn-danger">
+                        <span>Cart</span>
+                        <span class="badge badge-warning">{{ App\Models\Cart::totalItems() }}</span>
+                      </button>
+                     </a>
+                     </li>
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item mt-2">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item mt-2">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
