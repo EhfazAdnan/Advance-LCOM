@@ -40,7 +40,7 @@
 <div class="card card-body mt-3">
 <h2>Shipping Address</h2>
 
-<form method="POST" action="{{ route('user.profile.update') }}" aria-label="{{ __('Register') }}">
+<form method="POST" action="{{ route('checkouts.store') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -104,19 +104,63 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="payment_method" class="col-md-4 col-form-label text-md-right">{{ __('Payment Method') }}</label>
+                            <label for="message" class="col-md-4 col-form-label text-md-right">{{ __('Text your message to us..') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="payment_method_id" required>
-                                   <option value="">Select a payment please</option>
-                                   @foreach($payments as $payment)
-                                      <option value="{{ $payment->id }}">{{ $payment->name }}</option>
-                                   @endforeach
-                                </select>
+                                <textarea id="message" rows="4" class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}" name="message"></textarea>
+
+                                @if ($errors->has('message'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row">
+                            <label for="payment_method" class="col-md-4 col-form-label text-md-right">{{ __('Payment Method') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="payment_method_id" required id="payments">
+                                   <option value="">Select a payment please</option>
+                                   @foreach($payments as $payment)
+                                      <option value="{{ $payment->short_name }}">{{ $payment->name }}</option>
+                                   @endforeach
+                                </select>
+
+                                @foreach($payments as $payment)
+                                   
+                                      @if($payment->short_name == "cash_in")
+                                        <div id="payment_{{$payment->short_name}}" class="alert alert-success hidden text-center mt-2">
+                                           <h3>For cash in there is nothing necessary.Just click finish button.</h3>
+                                           <br>
+                                           <small>You will get your product in two or three business days.</small> 
+                                        </div>
+                                      @else
+                                        <div id="payment_{{$payment->short_name}}" class="alert alert-success hidden text-center mt-3">
+                                           <h3>{{ $payment->name }} Payment</h3>
+                                           <p><strong>{{ $payment->name }} No : {{ $payment->no }}</strong>
+                                           <br>
+                                           <strong>Account Type: {{ $payment->type }}</strong>
+                                           </p>
+                                           <div class="alert alert-success">
+                                              Please send the above money to this Bkash Number and write your transection code below the input field.<br>
+                                              Your product will send after matching the transection codes.
+                                           </div>
+
+                                        </div>
+                                      @endif
+                                @endforeach
+
+                        
+                                <input type="text" name="transaction_id" id="transaction_id" class="form-control hidden" placeholder="put transection code here..">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0 mt-2 text-center">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     Order Now
@@ -129,4 +173,29 @@
 
 </div>
 
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $("#payments").change(function(){
+            $payment_method = $("#payments").val();
+            if($payment_method == "cash_in"){
+                $("#payment_cash_in").removeClass('hidden');
+                $("#payment_bkash").addClass('hidden');
+                $("#payment_rocket").addClass('hidden');
+            }else if($payment_method == "bkash"){
+                $("#payment_bkash").removeClass('hidden');
+                $("#payment_cash_in").addClass('hidden');
+                $("#payment_rocket").addClass('hidden');
+
+                $("#transaction_id").removeClass('hidden');
+            }else if($payment_method == "rocket"){
+                $("#payment_rocket").removeClass('hidden');
+                $("#payment_bkash").addClass('hidden');
+                $("#payment_cash_in").addClass('hidden');
+
+                $("#transaction_id").removeClass('hidden');
+            }
+        })
+    </script>
 @endsection

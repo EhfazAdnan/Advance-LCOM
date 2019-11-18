@@ -4,6 +4,8 @@
 
 <div class="container margin-top-20">
     <h2>My Cart Items</h2>
+    
+    @if(App\Models\Cart::totalItems() > 0)
     <table class="table table-bordered table-stripe mt-3">
       <thead>
         <tr>
@@ -66,6 +68,13 @@
        <a href="{{ route('products') }}" class="btn btn-info btn-lg">Continue Shopping...</a>
        <a href="{{ route('checkouts') }}" class="btn btn-warning btn-lg">Checkout</a>
     </div>
+    @else
+      <div class="alert alert-warning mt-2">
+         <strong>There is no item in your cart.</strong> 
+         <br>
+         <a href="{{ route('products') }}" class="btn btn-info btn-lg mt-2">Continue Shopping...</a>
+      </div>
+    @endif
 
 </div>
 
