@@ -4,6 +4,7 @@
 
 <div class="container margin-top-20">
 <div class="card-body mb-5">
+
                     <form method="POST" action="{{ route('user.profile.update') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
@@ -158,6 +159,7 @@
                             </div>
                         </div>
                     </form>
+                    
                 </div>
 </div>
 

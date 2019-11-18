@@ -29,6 +29,12 @@ Route::group(['prefix' => 'carts'], function(){
     Route::post('/delete/{id}','Frontend\CartsController@destroy')->name('carts.delete');
 });
 
+//checkouts routes
+Route::group(['prefix' => 'checkout'], function(){
+    Route::get('/','Frontend\CheckoutsController@index')->name('checkouts');
+    Route::post('/store','Frontend\CheckoutsController@store')->name('checkouts.store');
+});
+
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Backend\PagesController@index')->name('admin.index');
 
