@@ -49,10 +49,12 @@ class CartsController extends Controller
         if(Auth::check()){
             $cart = Cart::where('user_id', Auth::id())
             ->where('product_id', $request->product_id)
+            ->where('order_id', NULL)
             ->first();
         }else{
             $cart = Cart::where('ip_address', request()->ip())
             ->where('product_id', $request->product_id)
+            ->where('order_id', NULL)
             ->first();
         }
 
