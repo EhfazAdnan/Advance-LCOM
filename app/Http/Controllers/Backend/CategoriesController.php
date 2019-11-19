@@ -10,6 +10,10 @@ use File;
 
 class CategoriesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+    
     public function index(){
         $categories = Category::orderBy('id','desc')->get();
         return view('backend.pages.categories.index', compact('categories'));

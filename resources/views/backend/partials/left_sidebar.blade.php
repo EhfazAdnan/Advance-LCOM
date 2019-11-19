@@ -63,6 +63,17 @@
             </div>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}">
+              
+              <form action="{{ route('admin.logout') }}" method="post" class="form-inline">
+              @csrf
+              <input type="submit" value="Logout" class="btn btn-primary">
+              </form> 
+
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- partial -->

@@ -38,6 +38,11 @@ Route::group(['prefix' => 'checkout'], function(){
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'Backend\PagesController@index')->name('admin.index');
 
+    // admin logic routes
+    Route::get('/login', 'Auth\Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('/login/submit', 'Auth\Admin\LoginController@login')->name('admin.login.submit');
+    Route::post('/logout/submit', 'Auth\Admin\LoginController@logout')->name('admin.logout');
+
     // Products routes
     Route::group(['prefix' => '/products'], function(){
         Route::get('/', 'Backend\ProductsController@index')->name('admin.products');

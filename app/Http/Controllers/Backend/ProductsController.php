@@ -10,6 +10,10 @@ use Image;
 
 class ProductsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+    
     public function index(){
         $products = Product::orderBy('id','desc')->get();
         return view('backend.pages.product.index')->with('products', $products);

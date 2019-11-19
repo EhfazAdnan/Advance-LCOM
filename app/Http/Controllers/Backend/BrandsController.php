@@ -10,6 +10,10 @@ use File;
 
 class BrandsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+    
     public function index(){
         $brands = Brand::orderBy('id','desc')->get();
         return view('backend.pages.brands.index', compact('brands'));
