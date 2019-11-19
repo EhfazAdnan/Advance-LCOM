@@ -43,6 +43,14 @@ Route::group(['prefix' => 'admin'], function(){
     Route::post('/login/submit', 'Auth\Admin\LoginController@login')->name('admin.login.submit');
     Route::post('/logout/submit', 'Auth\Admin\LoginController@logout')->name('admin.logout');
 
+    // password email send
+    Route::get('/password/reset', 'Auth\Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    Route::post('/password/resetPost', 'Auth\Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+
+    // password reset
+    Route::get('/password/reset/{token}', 'Auth\Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
+    Route::post('/password/reset', 'Auth\Admin\ResetPasswordController@reset')->name('admin.password.reset.post');
+
     // Products routes
     Route::group(['prefix' => '/products'], function(){
         Route::get('/', 'Backend\ProductsController@index')->name('admin.products');
