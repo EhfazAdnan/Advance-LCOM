@@ -111,6 +111,14 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('/delete/{id}', 'Backend\DistrictsController@delete')->name('admin.district.delete');
     });
 
+    // Slider routes
+    Route::group(['prefix' => '/sliders'], function(){
+        Route::get('/', 'Backend\SlidersController@index')->name('admin.sliders');
+        Route::post('/store', 'Backend\SlidersController@store')->name('admin.slider.store');
+        Route::post('/edit/{id}', 'Backend\SlidersController@update')->name('admin.slider.update');
+        Route::post('/delete/{id}', 'Backend\SlidersController@delete')->name('admin.slider.delete');
+    });
+
 });
 Auth::routes();
 

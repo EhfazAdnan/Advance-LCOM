@@ -23,6 +23,15 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#manage-sliders" aria-expanded="false" aria-controls="manage-sliders"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">Manage sliders</span></a>
+            <div class="collapse" id="manage-sliders">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.sliders') }}">All Sliders</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#manage-products" aria-expanded="false" aria-controls="manage-products"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">Manage Products</span></a>
             <div class="collapse" id="manage-products">
               <ul class="nav flex-column sub-menu">
