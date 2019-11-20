@@ -14,6 +14,15 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('admin.index') }}"><img class="menu-icon" src="{{ asset('images/menu_icons/01.png')}}" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
 
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#manage-orders" aria-expanded="false" aria-controls="manage-orders"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">Manage Orders</span></a>
+            <div class="collapse" id="manage-orders">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.orders') }}">All Orders</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#manage-products" aria-expanded="false" aria-controls="manage-products"> <img class="menu-icon" src="{{ asset('images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">Manage Products</span></a>
             <div class="collapse" id="manage-products">
               <ul class="nav flex-column sub-menu">

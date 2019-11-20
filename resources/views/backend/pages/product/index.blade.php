@@ -18,6 +18,7 @@
             <table class="table table-hover table-striped">
                 <tr>
                    <th>#</th>
+                   <th>Product Code</th>
                    <th>Product Title</th>
                    <th>Price</th>
                    <th>Quantity</th>
@@ -27,6 +28,7 @@
                 @foreach($products as $product)
                 <tr>
                    <td>#</td>
+                   <td>#PLE{{ $product->id }}</td>
                    <td>{{ $product->title }}</td>
                    <td>{{ $product->price }}</td>
                    <td>{{ $product->quantity }}</td>
