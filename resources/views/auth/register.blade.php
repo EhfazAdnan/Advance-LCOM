@@ -71,7 +71,7 @@
                             <label for="division_id" class="col-md-4 col-form-label text-md-right">{{ __('Select Division') }}</label>
 
                             <div class="col-md-6">
-                                <select name="division_id" class="form-control">
+                                <select name="division_id" class="form-control" id="division_id">
                                    <option value="">Please select your division</option>
                                    @foreach($divisions as $division)
                                       <option value="{{ $division->id }}">{{ $division->name }}</option>
@@ -84,11 +84,8 @@
                             <label for="district_id" class="col-md-4 col-form-label text-md-right">{{ __('Select District') }}</label>
 
                             <div class="col-md-6">
-                                <select name="district_id" class="form-control">
-                                   <option value="">Please select your district</option>
-                                   @foreach($districts as $district)
-                                      <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                   @endforeach
+                                <select name="district_id" class="form-control" id="district_area">
+                                   
                                 </select>
                             </div>
                         </div>
@@ -143,4 +140,31 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+   <script>
+      
+      $("#division_id").change(function(){
+        var division = $("#division_id").val();
+        
+        // send an ajax request to server with this division
+
+        $("#district_area").html("");
+        var option = "";
+
+        $.get("http://127.0.0.1:8000/get-districts/"+division, function(data){
+
+           data = JSON.parse(data);
+
+           data.forEach(function(element){
+              option += "<option value='"+ element.id +"'>"+ element.name +"</option>";
+           });
+
+           $("#district_area").html(option);
+
+        });
+      });
+
+   </script>
 @endsection
