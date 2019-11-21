@@ -90,7 +90,24 @@
       </tbody>
     </table>
     @endif
+    
+    <hr>
+       <form action="{{ route('admin.order.charge', $order->id) }}" class="form-group" method="post">
+          @csrf
 
+          <div class="form-group">
+          <label for="">Shipping Cost</label>
+          <input type="number" class="form-control" name="shipping_charge" id="shipping_charge" value="{{ $order->shipping_charge }}">
+          </div>
+
+          <div class="form-group">
+          <label for="">Custom Discount</label>
+          <input type="number" class="form-control" name="custom_discount" id="custom_discount" value="{{ $order->custom_discount }}">
+          </div>
+
+          <input type="submit" value="Update" class="btn btn-success">
+          <a href="{{ route('admin.order.invoice', $order->id) }}" class="btn btn-info ml-2">Generate Invoice</a>
+       </form>
     <hr>
 
     <form action="{{ route('admin.order.completed', $order->id) }}" method="post" style="display: inline-block!important;">
