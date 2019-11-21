@@ -20,7 +20,8 @@
    });
 
    function addToCart(product_id){
-       $.post("http://127.0.0.1:8000/api/carts/store", {
+       var url = "{{ url('/') }}";
+       $.post( url+"/api/carts/store", {
            product_id: product_id
        }).done(function(data){
 

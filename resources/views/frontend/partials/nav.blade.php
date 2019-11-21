@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-light">
 <div class="container">
   <a class="navbar-brand" href="{{ route('index') }}">LaraEcommerce</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('contact') }}">Contact</a>
       </li>
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
@@ -26,14 +26,14 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </li>
+      </li> -->
 
       <li class="nav-item ml-5">
          <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="get">
           <div class="input-group">
-            <input type="text" name="search" class="form-control" placeholder="Search Products">
+            <input type="text" name="search" class="form-control" placeholder="Search Products" style="height:41px">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
+              <button class="btn btn-outline-secondary search-icon-button" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
             </div>
           </div>
          </form>

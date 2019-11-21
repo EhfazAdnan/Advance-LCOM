@@ -38,3 +38,27 @@ body{
     padding-left: 20px;
     background: #fff;
 }
+
+.bg-light {
+    background-color: #006E87!important;
+}
+
+.btn {
+    padding: 0.475rem 0.55rem!important;
+}
+
+.search-icon-button {
+    background: #FDD922;
+    border: 1px solid #FDD922;
+}
+
+.search-icon-button:hover {
+    background: #FDD922;
+    border: 1px solid #FDD922;
+    color: #FFF;
+}
+
+footer {
+    background-color: #006E87!important;
+    color: #FFF;
+}
